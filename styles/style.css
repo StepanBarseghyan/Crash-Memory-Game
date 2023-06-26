@@ -1,0 +1,113 @@
+@font-face {
+font-family: Grinched;
+src: url('../fonts/Grinched.ttf');
+font-weight: 500 ;
+font-display: swap;
+font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(../images/CTR_046_CrashCove-46-1600.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#game__body{
+    width: 1000px;
+    height: 100vh;
+    background: linear-gradient(
+        to right bottom,
+        rgba(255,255,255,.4),
+        rgba(255,255,255,.2)
+        );
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 50px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+    position: relative;
+}
+#cards_center{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 720px;
+
+}
+#stepsCount{
+    background-color: #0098cf;
+    padding: 10px 20px;
+    margin: 20px;
+    letter-spacing: 4px;
+    color: #fff094;
+    text-transform: uppercase;
+    font-family:Grinched;
+    font-weight: bolder;
+    border-radius: 50px;
+    border: 4px solid #fff094;
+    background: linear-gradient(180deg, rgba(4,106,180,1) 0%, rgba(0,152,207,1) 100%);
+}
+#card{
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform .3s ease;
+    position: relative;
+}
+#card:hover{
+    transform: scale(1.1);
+}
+#card:hover .front{
+    box-shadow: 0px 0px 35px rgb(75 60 0 / 80%);
+}
+.front,.back  {
+width: 100%;
+height: 100%;
+backface-visibility: hidden;
+position: absolute;
+transition: transform .6s linear, box-shadow .6s;
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+border-radius: 20px;
+}
+.front{
+    transform: perspective(600px) rotateY(0deg);
+    border: 4px solid #fff094;
+    box-shadow: 0px 0px 30px rgb(75 60 0 / 40%);
+}
+.back {
+    transform: perspective(600px) rotateY(180deg);
+    
+}
+.active >.front{
+    transform: perspective(600px) rotateY(-180deg);
+}
+
+.active >.back{
+    transform: perspective(600px) rotateY(0deg);
+}
+.guessed > .back {
+    position: relative;
+    filter: brightness(0.3);
+}
+.guessed > .back::after{
+   content: '';
+   position:absolute;
+   width: 100%;
+   height: 100%;
+   /* background-color: rgba(33, 182, 3, 0.6); */
+   
+}
+
